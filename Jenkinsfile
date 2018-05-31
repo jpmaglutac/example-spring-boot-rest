@@ -5,15 +5,18 @@ pipeline {
     stages {
         stage("Test") {
             steps {
-                withMaven(maven: 'mvn-default')
-                bat 'mvn clean test'
-                junit 'target'
+                withMaven(maven: 'mvn-default') {
+                    bat 'mvn clean test'
+                    junit 'target'
+                }
             }
         }
         
         stage("Build") {
             steps {
-                bat 'mvn package'
+                withMaven(maven: 'mvn-default') {
+                    bat 'mvn package'
+                }
             }
         }
         
