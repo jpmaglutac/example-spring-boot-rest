@@ -23,7 +23,7 @@ pipeline {
         
         stage("Deploy") {
             steps {
-                bat 'javaw -jar target/example-spring-boot-rest-1.0-SNAPSHOT.jar'
+                bat 'start /B java -jar target/example-spring-boot-rest-1.0-SNAPSHOT.jar'
             }
         }
         
