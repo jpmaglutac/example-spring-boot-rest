@@ -23,7 +23,16 @@ pipeline {
         
         stage("Deploy") {
             steps {
-                bat 'java -jar target/example-spring-boot-rest-1.0-SNAPSHOT.jar'
+                bat 'javaw -jar target/example-spring-boot-rest-1.0-SNAPSHOT.jar'
+            }
+        }
+        
+        stage("API Test") {
+            steps {
+                dir("tests") {
+                    bat 'newman run example-spring-boot-rest.postman_collection.json -r "cli,html"'
+                    publishHTML 'newman/*.html'
+                }
             }
         }
               
