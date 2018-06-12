@@ -7,7 +7,7 @@ pipeline {
             steps {
                 withMaven(maven: 'mvn-default') {
                     bat 'mvn clean test'
-                    junit 'target/surefire-reports/*'
+                    junit 'target/surefire-reports/*.xml'
                 }
             }
         }
