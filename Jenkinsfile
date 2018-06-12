@@ -23,7 +23,9 @@ pipeline {
         
         stage("Deploy") {
             steps {
-                bat 'start /B java -jar target/example-spring-boot-rest-1.0-SNAPSHOT.jar'
+                dir("target") {
+                    bat 'start /B java -jar example-spring-boot-rest-1.0-SNAPSHOT.jar'
+                }
             }
         }
         
